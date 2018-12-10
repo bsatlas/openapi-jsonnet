@@ -50,8 +50,32 @@ local servers = [
   .addVariable(username),
 ];
 
+local respfoo =
+  openapi.response.new('Not Found');
+
+local getFooResp =
+  openapi.responses.new()
+  .addResponse('404', respfoo)
+;
+
+local getFoo =
+  openapi.operation.new()
+  .addResponses(getFooResp)
+;
+
+local fooPath =
+  openapi.pathItem.new()
+  .addOperation('GET', getFoo);
+
+local paths =
+  openapi.paths.new()
+  .addPath(
+    '/foo',
+    fooPath
+  );
+
 openapi.New(
   info=info,
-  paths={},
+  paths=paths,
   servers=servers,
 )

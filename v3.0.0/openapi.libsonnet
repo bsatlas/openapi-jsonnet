@@ -4,6 +4,11 @@
   license: import 'license.libsonnet',
   server: import 'server.libsonnet',
   serverVariable: import 'server-variable.libsonnet',
+  paths: import 'paths.libsonnet',
+  pathItem: import 'path-item.libsonnet',
+  responses: import 'responses.libsonnet',
+  response: import 'response.libsonnet',
+  operation: import 'operation.libsonnet',
 
   // Initalize new OpenAPI spec.
   // @param info An Info object.
@@ -23,8 +28,15 @@
     externalDocs=null
   ):: {
     openapi: '3.0.0',
-    info: info,
-    paths: paths,
+    info:
+      if std.type(info) == 'object'
+      then info
+      else error "OpenAPI object field 'info' must be an object.",
+
+    paths:
+      if std.type(paths) == 'object'
+      then paths
+      else error "OpenAPI object field 'paths' must be an object.",
 
     [if servers != null then 'servers']:
       if std.type(servers) == 'array'
