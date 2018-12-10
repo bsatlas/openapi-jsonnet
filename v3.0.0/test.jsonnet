@@ -20,7 +20,20 @@ local info = openapi.info.New(
   license=license,
 );
 
+local servers = [
+  openapi.server.New(
+    url='http://server-1.localhost',
+    description='Server-1 description',
+  ),
+
+  openapi.server.New(
+    url='http://server-2.localhost',
+    description='Server-2 description',
+  ),
+];
+
 openapi.New(
   info=info,
-  paths={}
+  paths={},
+  servers=servers,
 )

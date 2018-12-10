@@ -2,6 +2,7 @@
   info: import 'info.libsonnet',
   contact: import 'contact.libsonnet',
   license: import 'license.libsonnet',
+  server: import 'server.libsonnet',
 
   // Initalize new OpenAPI spec.
   // @param info An Info object.
@@ -23,7 +24,12 @@
     openapi: '3.0.0',
     info: info,
     paths: paths,
-    [if servers != null then 'servers']: servers,
+
+    [if servers != null then 'servers']:
+      if std.type(servers) == 'array'
+      then servers
+      else error "OpenAPI object field 'servers' must be an array.",
+
     [if components != null then 'components']: components,
     [if security != null then 'security']: security,
     [if tags != null then 'tags']: tags,
