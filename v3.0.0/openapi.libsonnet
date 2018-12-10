@@ -1,5 +1,8 @@
-local info = import 'info.libsonnet';
 {
+  info: import 'info.libsonnet',
+  contact: import 'contact.libsonnet',
+  license: import 'license.libsonnet',
+
   // Initalize new OpenAPI spec.
   // @param info An Info object.
   // @param servers An array of Server objects.
@@ -9,21 +12,21 @@ local info = import 'info.libsonnet';
   // @param tags An array of Tag objects.
   // @param externalDocs An External Documentation object.
   New(
-    info,
-    servers,
-    paths,
-    components,
-    security,
-    tags,
-    externalDocs
+    info=error "Field 'info' required.",
+    paths=error "Field 'paths' required.",
+    servers=null,
+    components=null,
+    security=null,
+    tags=null,
+    externalDocs=null
   ):: {
     openapi: '3.0.0',
     info: info,
-    servers: servers,
     paths: paths,
-    components: components,
-    security: security,
-    tags: tags,
-    externalDocs: externalDocs,
+    [if servers != null then 'servers']: servers,
+    [if components != null then 'components']: components,
+    [if security != null then 'security']: security,
+    [if tags != null then 'tags']: tags,
+    [if externalDocs != null then 'externalDocs']: externalDocs,
   },
 }

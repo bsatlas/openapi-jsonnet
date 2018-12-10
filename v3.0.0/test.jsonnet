@@ -1,14 +1,26 @@
 local openapi = import 'openapi.libsonnet';
-local spec = openapi.spec;
-local paths = openapi.paths;
 
-local testSpec = spec.New();
+local contact = openapi.contact.New(
+  name='John Doe',
+  url='http://localhost',
+  email='john.doe@localhost',
+);
 
-local foo = paths.New('/foo');
+local license = openapi.license.New(
+  name='Apache 2.0',
+  url='http://www.apache.org/licenses/LICENSE-2.0.html',
+);
 
-local bar = paths.New('/bar');
+local info = openapi.info.New(
+  title='Test App',
+  version='v1.1.1',
+  description='A test app.',
+  termsOfService='http://localhost/tos',
+  contact=contact,
+  license=license,
+);
 
-local addBar = spec.AddPath(bar, testSpec);
-local addFoo = spec.AddPath(foo, addBar);
-
-addFoo
+openapi.New(
+  info=info,
+  paths={}
+)
