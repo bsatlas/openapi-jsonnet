@@ -3,6 +3,7 @@
   contact: import 'contact.libsonnet',
   license: import 'license.libsonnet',
   server: import 'server.libsonnet',
+  serverVariable: import 'server-variable.libsonnet',
 
   // Initalize new OpenAPI spec.
   // @param info An Info object.

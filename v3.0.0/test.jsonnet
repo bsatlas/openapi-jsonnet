@@ -20,10 +20,17 @@ local info = openapi.info.New(
   license=license,
 );
 
+local username = openapi.serverVariable.New(
+  name='username',
+  default='demo',
+);
+
 local servers = [
+
   openapi.server.New(
     url='http://server-1.localhost',
     description='Server-1 description',
+    variables=username,
   ),
 
   openapi.server.New(
