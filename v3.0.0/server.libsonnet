@@ -11,5 +11,12 @@
     url: url,
     [if description != null then 'description']: description,
     [if variables != null then 'variables']: variables,
+
+    // Add a server variable to the object.
+    // @param variable A Server Variable object.
+    addVariable(variable):: self {
+      variable+: variable,
+    },
   },
+
 }

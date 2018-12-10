@@ -22,7 +22,16 @@ local info = openapi.info.New(
 
 local username = openapi.serverVariable.New(
   name='username',
-  default='demo',
+  default='demo-0',
+  description='Username description',
+  enum=['demo-1', 'demo-2', 'demo-3']
+);
+
+local port = openapi.serverVariable.New(
+  name='port',
+  default='443',
+  description='Username description',
+  enum=['80', '75', '22']
 );
 
 local servers = [
@@ -30,13 +39,15 @@ local servers = [
   openapi.server.New(
     url='http://server-1.localhost',
     description='Server-1 description',
-    variables=username,
-  ),
+  )
+  .addVariable(username),
 
   openapi.server.New(
     url='http://server-2.localhost',
     description='Server-2 description',
-  ),
+  )
+  .addVariable(port)
+  .addVariable(username),
 ];
 
 openapi.New(
