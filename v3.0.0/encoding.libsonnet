@@ -1,15 +1,15 @@
 {
   // Initialize new Encoding object.
   new(
-    contentType,
-    style,
-    explode,
-    allowReserved
+    contentType=null,
+    style=null,
+    explode=null,
+    allowReserved=null
   ):: {
-    contentType: contentType,
-    style: style,
-    explode: explode,
-    allowReserved: allowReserved,
+    [if contentType != null then 'contentType']: contentType,
+    [if style != null then 'style']: style,
+    [if explode != null then 'explode']: explode,
+    [if allowReserved != null then 'allowReserved']: allowReserved,
 
     addHeader(header):: self {
       headers+: header,
