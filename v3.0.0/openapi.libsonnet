@@ -11,41 +11,49 @@
   operation: import 'operation.libsonnet',
 
   // Initalize new OpenAPI spec.
-  // @param info An Info object.
-  // @param servers An array of Server objects.
-  // @param paths A Paths object.
-  // @param components A Components object.
-  // @param security An array of Security Requirement objects.
-  // @param tags An array of Tag objects.
-  // @param externalDocs An External Documentation object.
-  New(
-    info=error "Field 'info' required.",
-    paths=error "Field 'paths' required.",
-    servers=null,
-    components=null,
-    security=null,
-    tags=null,
-    externalDocs=null
-  ):: {
+  new():: {
     openapi: '3.0.0',
-    info:
-      if std.type(info) == 'object'
-      then info
-      else error "OpenAPI object field 'info' must be an object.",
 
-    paths:
-      if std.type(paths) == 'object'
-      then paths
-      else error "OpenAPI object field 'paths' must be an object.",
+    // Add an Info Object to the spec.
+    // @param info An Info object.
+    addInfo(info):: self {
+      info+: info,
+    },
 
-    [if servers != null then 'servers']:
-      if std.type(servers) == 'array'
-      then servers
-      else error "OpenAPI object field 'servers' must be an array.",
+    // Add a Server object to the spec.
+    // @param server A Server object.
+    addServer(server):: self {
+      servers+: [server],
+    },
 
-    [if components != null then 'components']: components,
-    [if security != null then 'security']: security,
-    [if tags != null then 'tags']: tags,
-    [if externalDocs != null then 'externalDocs']: externalDocs,
+    // Add a path to the spec.
+    // @param path A Path object.
+    addPath(path):: self {
+      paths+: path,
+    },
+
+    // Add a component to the spec.
+    // @param component A Components object.
+    addComponent(component):: self {
+      components+: component,
+    },
+
+    // Add a security requirement to the spec.
+    // @param requirement A Security Requirement object.
+    addSecurityRequirement(requirement):: self {
+      security+: [requirement],
+    },
+
+    // Add a global tag to the spec.
+    // @param tag An Tag object.
+    addTag(tag):: self {
+      tags+: [tag],
+    },
+
+    // Add an External Documentation object to the spec.
+    // @param doc An External Documentation object.
+    addExternalDoc(doc):: self {
+      externalDocs+: doc,
+    },
   },
 }
