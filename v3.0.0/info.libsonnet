@@ -1,29 +1,18 @@
 {
   // Initialize new info object.
-  New():: {
-
-    addTitle(title):: self {
-      title+: title,
-    },
-
-    addVersion(version):: self {
-      version+: version,
-    },
-
-    addDescription(description):: self {
-      description+: description,
-    },
-
-    addTermOfService(ToS):: self {
-      termsOfService+: ToS,
-    },
-
-    addContact(contact):: self {
-      contact+: contact,
-    },
-
-    addLicense(license):: self {
-      license+: license,
-    },
+  new(
+    title=error 'Title not defined for Info object.',
+    version='v1.0.0',
+    description=null,
+    termsOfService=null,
+    contact=null,
+    license=null
+  ):: {
+    title: title,
+    version: version,
+    [if description != null then 'description']: description,
+    [if termsOfService != null then 'termsOfService']: termsOfService,
+    [if contact != null then 'contact']: contact,
+    [if license != null then 'license']: license,
   },
 }
