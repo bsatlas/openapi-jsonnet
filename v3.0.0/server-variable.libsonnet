@@ -1,6 +1,6 @@
 {
   // Initialize new Server Variable object.
-  New(
+  new(
     name=error "New Server Variable method missing 'name' parameter.",
     default=error "Server Variable object missing required field 'default'.",
     description=null

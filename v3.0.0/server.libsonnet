@@ -1,6 +1,6 @@
 {
   // Initialize new Server object.
-  New(
+  new(
     url=error 'URL not defined for Server object.',
     description=null,
   ):: {
