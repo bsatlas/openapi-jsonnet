@@ -1,6 +1,9 @@
 {
   // Initialize new Media Type object.
-  new(name, schema):: {
+  new(
+    name=error 'Name not defined for Media Type object.',
+    schema=error 'Schema not defined for Media Type object.',
+  ):: {
     [name]: {
       schema: schema,
     },
