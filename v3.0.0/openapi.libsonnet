@@ -11,35 +11,18 @@
   operation: import 'operation.libsonnet',
 
   // Initalize new OpenAPI spec.
-  new():: {
+  new(
+    info=error 'Info not defined for OpenAPI object.',
+    paths=error 'Paths not defined for OpenAPI object.',
+    servers=null,
+    tags=null,
+    externalDocs=null,
+  ):: {
     openapi: '3.0.0',
-
-    addInfo(info):: self {
-      info+: info,
-    },
-
-    addServer(server):: self {
-      servers+: [server],
-    },
-
-    addPath(path):: self {
-      paths+: path,
-    },
-
-    addComponent(component):: self {
-      components+: component,
-    },
-
-    addSecurityRequirement(requirement):: self {
-      security+: [requirement],
-    },
-
-    addTag(tag):: self {
-      tags+: [tag],
-    },
-
-    addExternalDoc(doc):: self {
-      externalDocs+: doc,
-    },
+    info: info,
+    paths: paths,
+    [if servers != null then 'servers']: servers,
+    [if tags != null then 'tags']: tags,
+    [if externalDocs != null then 'externalDocs']: externalDocs,
   },
 }
