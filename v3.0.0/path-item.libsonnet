@@ -1,10 +1,13 @@
 {
   // Initialize new Path Item object.
-  new():: {
-
-    addSummary(summary):: self { summary+: summary },
-
-    addDescription(description):: self { description+: description },
+  new(
+    summary=null,
+    description=null,
+    servers=null,
+  ):: {
+    [if summary != null then 'summary']: summary,
+    [if description != null then 'description']: description,
+    [if servers != null then 'servers']: servers,
 
     addOperation(method, operation):: self {
       [
