@@ -14,44 +14,30 @@
   new():: {
     openapi: '3.0.0',
 
-    // Add an Info Object to the spec.
-    // @param info An Info object.
     addInfo(info):: self {
       info+: info,
     },
 
-    // Add a Server object to the spec.
-    // @param server A Server object.
     addServer(server):: self {
       servers+: [server],
     },
 
-    // Add a path to the spec.
-    // @param path A Path object.
     addPath(path):: self {
       paths+: path,
     },
 
-    // Add a component to the spec.
-    // @param component A Components object.
     addComponent(component):: self {
       components+: component,
     },
 
-    // Add a security requirement to the spec.
-    // @param requirement A Security Requirement object.
     addSecurityRequirement(requirement):: self {
       security+: [requirement],
     },
 
-    // Add a global tag to the spec.
-    // @param tag An Tag object.
     addTag(tag):: self {
       tags+: [tag],
     },
 
-    // Add an External Documentation object to the spec.
-    // @param doc An External Documentation object.
     addExternalDoc(doc):: self {
       externalDocs+: doc,
     },
