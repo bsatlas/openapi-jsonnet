@@ -1,18 +1,11 @@
 {
   // Initialize new Server object.
-  New():: {
-
-    addURL(url):: self {
-      url+: url,
-    },
-
-    addDescription(description):: self {
-      description+: description,
-    },
-
+  New(
+    url=error 'URL not defined for Server object.',
+    description=null,
+  ):: {
     addVariable(variable):: self {
       variable+: variable,
     },
   },
-
 }
