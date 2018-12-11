@@ -1,13 +1,10 @@
 {
   // Initialize new License object.
-  new():: {
-
-    addName(name):: self {
-      name+: name,
-    },
-
-    addURL(url):: self {
-      url+: url,
-    },
+  new(
+    name=error 'Name not defined for License object',
+    url=null,
+  ):: {
+    name: name,
+    [if url != null then 'url']: url,
   },
 }
