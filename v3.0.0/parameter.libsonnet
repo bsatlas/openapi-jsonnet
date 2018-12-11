@@ -1,22 +1,32 @@
 {
   // Initialize Parameter object.
-  new(name, location, required):: {
+  new(
+    name=error 'Name not defined for Parameter object.',
+    paramIn=error 'ParamIn not defined for Parameter object.',
+    description=null,
+    required=true,
+    deprecated=false,
+    allowEmptyValue=false,
+    style='simple',
+    explode=false,
+    allowReserved=false,
+    schema=null,
+    example=null,
+    examples=null,
+    content=null,
+  ):: {
     name: name,
-    'in': location,
+    'in': paramIn,
     required: required,
-
-    addDescription(description):: self {
-      description+: description,
-    },
-
-    // Set deprecated flag.
-    deprecated():: self {
-      deprecated: true,
-    },
-
-    // Allow query parameter to have an empty value.
-    allowEmptyValue():: self {
-      allowEmptyValue: true,
-    },
+    deprecated: deprecated,
+    allowEmptyValue: allowEmptyValue,
+    style: style,
+    explode: explode,
+    allowReserved: allowReserved,
+    [if description != null then 'description']: description,
+    [if schema != null then 'schema']: schema,
+    [if example != null then 'example']: example,
+    [if examples != null then 'examples']: examples,
+    [if content != null then 'content']: content,
   },
 }
