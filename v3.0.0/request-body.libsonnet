@@ -7,10 +7,5 @@
   ):: {
     required: required,
     [if description != null then 'description']: description,
-
-    addContent(content):: self {
-      content+: content,
-
-    },
   },
 }
