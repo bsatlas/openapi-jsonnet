@@ -1,8 +1,12 @@
 {
   // Initialize new Request Body object.
-  new(required, description):: {
+  new(
+    content=error 'Content not defined for Request Body object.',
+    required=false,
+    description=null,
+  ):: {
     required: required,
-    description: description,
+    [if description != null then 'description']: description,
 
     addContent(content):: self {
       content+: content,
