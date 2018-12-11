@@ -6,9 +6,9 @@
     value=null,
     externalValue=null,
   ):: {
-    summary: summary,
-    description: description,
-    value: value,
-    externalValue: externalValue,
+    [if summary != null then 'summary']: summary,
+    [if description != null then 'description']: description,
+    [if value != null then 'value']: value,
+    [if externalValue != null then 'externalValue']: externalValue,
   },
 }
