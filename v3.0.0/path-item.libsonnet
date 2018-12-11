@@ -17,7 +17,7 @@
       else if method == 'PATCH' then 'patch'
       else if method == 'TRACE' then 'trace'
       else error 'Invalid HTTP method for operation.'
-      ]: operation,
+      ]+: operation,
     },
 
     addServer(server):: self {
