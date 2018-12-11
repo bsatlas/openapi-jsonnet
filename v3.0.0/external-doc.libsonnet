@@ -1,13 +1,10 @@
 {
-  // Initialize External Documentation object.
-  new():: {
-
-    addDescription(description):: self {
-      description+: description,
-    },
-
-    addURL(url):: self {
-      url+: url,
-    },
+  // Initialize new External Documentation object.
+  new(
+    description,
+    url
+  ):: {
+    [if description != null then 'description']: description,
+    [if url != null then 'url']: url,
   },
 }
