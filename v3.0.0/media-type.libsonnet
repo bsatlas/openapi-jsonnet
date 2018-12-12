@@ -6,15 +6,11 @@
     schema: schema,
 
     addExample(example):: self {
-      [name]+: {
-        examples+: example,
-      },
+      examples+: example,
     },
 
     addEncoding(encoding):: self {
-      [name]+: {
-        encoding+: encoding,
-      },
+      encoding+: encoding,
     },
   },
 }
