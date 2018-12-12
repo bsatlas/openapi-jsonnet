@@ -16,9 +16,9 @@
       },
     },
 
-    addContent(mediaType):: self {
+    addContent(content):: self {
       [statusCode]+: {
-        content+: mediaType,
+        content+: content,
       },
     },
   },
