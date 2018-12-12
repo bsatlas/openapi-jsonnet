@@ -16,9 +16,11 @@
       },
     },
 
-    addContent(content):: self {
+    addContent(name, mediaType):: self {
       [statusCode]+: {
-        content+: content,
+        content+: {
+          [name]: mediaType,
+        },
       },
     },
   },
