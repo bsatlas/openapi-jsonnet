@@ -1,16 +1,23 @@
 {
   // Initialize new Response object.
   new(
+    statusCode=error 'StatusCode not defined for Response object.',
     description=null,
   ):: {
-    [if description != null then 'description']: description,
+    [statusCode]: {
+      [if description != null then 'description']: description,
+    },
 
     addHeader(headers):: self {
-      headers+: headers,
+      [statusCode]+: {
+        headers+: headers,
+      },
     },
 
     addContent(mediaType):: self {
-      content+: mediaType,
+      [statusCode]+: {
+        content+: mediaType,
+      },
     },
   },
 }
